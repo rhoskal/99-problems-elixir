@@ -48,4 +48,25 @@ defmodule NinetyNineTest do
     assert NinetyNine.flatten(["a", ["b", ["c", "d"], "e"]]) == ["a", "b", "c", "d", "e"]
     assert NinetyNine.flatten([[["a"]]]) == ["a"]
   end
+
+  test "[08] Should remove consecutive duplicates" do
+    assert NinetyNine.compress(["a", "a", "b", "c", "c"]) == ["a", "b", "c"]
+
+    assert NinetyNine.compress([
+             "a",
+             "a",
+             "a",
+             "a",
+             "b",
+             "c",
+             "c",
+             "a",
+             "a",
+             "d",
+             "e",
+             "e",
+             "e",
+             "e"
+           ]) == ["a", "b", "c", "a", "d", "e"]
+  end
 end

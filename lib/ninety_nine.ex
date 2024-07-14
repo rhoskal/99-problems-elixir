@@ -106,4 +106,20 @@ defmodule NinetyNine do
   def flatten([]), do: []
   def flatten([x | xs]), do: flatten(x) ++ flatten(xs)
   def flatten(x), do: [x]
+
+  @doc """
+  Problem 8
+
+  Eliminate consecutive duplicates of list elements.
+
+  ## Examples
+
+      iex> NinetyNine.compress([1, 1, 2, 3, 4, 4])
+      [1, 2, 3, 4]
+
+  """
+  def compress([]), do: []
+
+  def compress([head | tail]),
+    do: [head] ++ compress(Enum.drop_while(tail, fn x -> x == head end))
 end

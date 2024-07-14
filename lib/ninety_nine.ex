@@ -155,4 +155,32 @@ defmodule NinetyNine do
     {matches, rest} = Enum.split_while(xs, &(&1 == List.first(xs)))
     [Enum.join(matches)] ++ pack(rest)
   end
+
+  @doc """
+  Problem 10
+
+  Runs the "run-length" encoding data compression algorithm.
+  Consecutive duplicates of elements are encoded as lists (N E) where N is the number of duplicates of the element E.
+  Note: equivalent native fn is `Enum.frequencies/1`
+
+  ## Examples
+
+      iex> NinetyNine.encode(["a", "a", "b", "c", "c"])
+      %{"a" => 2, "b" => 1, "c" => 2}
+
+  """
+  @spec encode([String.t() | Integer.t()]) :: Map.t([String.t() | Integer.t()], Integer.t())
+  def encode(xs) do
+    xs
+    |> Enum.uniq()
+    |> List.foldl(%{}, fn key, acc ->
+      count = Enum.count(xs, &(&1 == key))
+
+      case acc do
+        %{} -> Map.put(acc, key, count)
+        _ -> %{acc | key => count}
+      end
+    end)
+  end
 end
+

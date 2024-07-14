@@ -77,4 +77,9 @@ defmodule NinetyNineTest do
     assert NinetyNine.pack(["a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e"]) ==
              ["aaaa", "b", "cc", "aa", "d", "eeee"]
   end
+
+  test "[10] Should encode duplicates" do
+    assert NinetyNine.encode(["a", "a", "b", "c", "c"]) == %{"a" => 2, "b" => 1, "c" => 2}
+    assert NinetyNine.encode([1, 1, 2, 3, 3]) == %{1 => 2, 2 => 1, 3 => 2}
+  end
 end

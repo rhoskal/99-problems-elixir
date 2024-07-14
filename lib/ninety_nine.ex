@@ -127,7 +127,7 @@ defmodule NinetyNine do
   def compress([]), do: []
 
   def compress([head | tail]),
-    do: [head] ++ compress(Enum.drop_while(tail, fn x -> x == head end))
+    do: [head] ++ compress(Enum.drop_while(tail, &(&1 == head)))
 
   @doc """
   Problem 9
@@ -144,7 +144,7 @@ defmodule NinetyNine do
   def pack([]), do: []
 
   def pack(xs) do
-    {matches, rest} = Enum.split_while(xs, fn x -> x == List.first(xs) end)
+    {matches, rest} = Enum.split_while(xs, &(&1 == List.first(xs)))
     [Enum.join(matches)] ++ pack(rest)
   end
 end

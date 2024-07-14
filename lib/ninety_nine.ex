@@ -4,15 +4,17 @@ defmodule NinetyNine do
   """
 
   @doc """
-  Hello world.
+  Problem 1
+
+  Return the last element of a list.
 
   ## Examples
 
-      iex> NinetyNine.hello()
-      :world
+      iex> NinetyNine.last([1, 2, 3])
+      3
 
   """
-  def hello do
-    :world
-  end
+  def last([]), do: nil
+  def last([x]), do: x
+  def last([_ | tail]), do: last(tail)
 end

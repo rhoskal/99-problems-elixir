@@ -44,7 +44,7 @@ deps: ## Install Elixir and Npm deps
 
 .PHONY: run
 run: ## Run the web server
-	iex -S mix phx.server
+	iex -S mix
 
 .PHONY: test
 test: ## Test Elixir code

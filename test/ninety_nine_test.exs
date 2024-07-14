@@ -27,4 +27,9 @@ defmodule NinetyNineTest do
     assert NinetyNine.my_length([1]) == 1
     assert NinetyNine.my_length(Enum.to_list(1..10)) == 10
   end
+
+  test "[05] Should return the elements in a list reversed" do
+    assert NinetyNine.my_reverse([]) == []
+    assert NinetyNine.my_reverse(Enum.to_list(1..5)) == [5, 4, 3, 2, 1]
+  end
 end

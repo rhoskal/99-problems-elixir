@@ -61,4 +61,17 @@ defmodule NinetyNine do
   """
   def my_length([]), do: 0
   def my_length([_ | xs]), do: 1 + my_length(xs)
+
+  @doc """
+  Problem 5
+
+  Reverse items in a list.
+
+  ## Examples
+
+      iex> NinetyNine.my_reverse([1, 2, 3])
+      [3, 2, 1]
+
+  """
+  def my_reverse(xs), do: List.foldl(xs, [], fn x, acc -> [x | acc] end)
 end

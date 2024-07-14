@@ -15,6 +15,7 @@ defmodule NinetyNine do
       3
 
   """
+  @spec last([String.t() | Integer.t()]) :: [String.t() | Integer.t()]
   def last([]), do: nil
   def last([x]), do: x
   def last([_ | xs]), do: last(xs)
@@ -30,6 +31,7 @@ defmodule NinetyNine do
       [2, 3]
 
   """
+  @spec last_two([String.t() | Integer.t()]) :: [String.t() | Integer.t()]
   def last_two([]), do: nil
   def last_two([x, y]), do: [x, y]
   def last_two([_ | xs]), do: last_two(xs)
@@ -46,6 +48,7 @@ defmodule NinetyNine do
       1
 
   """
+  @spec element_at(Integer.t(), [String.t() | Integer.t()]) :: [String.t() | Integer.t()]
   def element_at(_, []), do: nil
   def element_at(n, [x | _]) when n == 1, do: x
   def element_at(n, [_ | xs]), do: element_at(n - 1, xs)
@@ -62,6 +65,7 @@ defmodule NinetyNine do
       3
 
   """
+  @spec my_length([String.t() | Integer.t()]) :: Integer.t()
   def my_length([]), do: 0
   def my_length([_ | xs]), do: 1 + my_length(xs)
 
@@ -77,6 +81,7 @@ defmodule NinetyNine do
       [3, 2, 1]
 
   """
+  @spec my_reverse([String.t() | Integer.t()]) :: [String.t() | Integer.t()]
   def my_reverse(xs), do: List.foldl(xs, [], fn x, acc -> [x | acc] end)
 
   @doc """
@@ -90,6 +95,7 @@ defmodule NinetyNine do
       true
 
   """
+  @spec is_palindrome([String.t() | Integer.t()]) :: [String.t() | Integer.t()]
   def is_palindrome([]), do: true
   def is_palindrome([_]), do: true
 
@@ -108,6 +114,7 @@ defmodule NinetyNine do
       [1, 2, 3]
 
   """
+  @spec flatten([String.t() | Integer.t()]) :: [String.t() | Integer.t()]
   def flatten([]), do: []
   def flatten([x | xs]), do: flatten(x) ++ flatten(xs)
   def flatten(x), do: [x]
@@ -124,6 +131,7 @@ defmodule NinetyNine do
       [1, 2, 3, 4]
 
   """
+  @spec compress([String.t() | Integer.t()]) :: [String.t() | Integer.t()]
   def compress([]), do: []
 
   def compress([head | tail]),
@@ -140,7 +148,7 @@ defmodule NinetyNine do
       ["aa", "b", "cc"]
 
   """
-  @spec pack([String.t()]) :: [String.t()]
+  @spec pack([String.t() | Integer.t()]) :: [String.t()]
   def pack([]), do: []
 
   def pack(xs) do

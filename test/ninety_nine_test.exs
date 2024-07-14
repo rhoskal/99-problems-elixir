@@ -1,5 +1,5 @@
 defmodule NinetyNineTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest NinetyNine
 
   test "[01] Should return the last element of a list" do
@@ -41,5 +41,11 @@ defmodule NinetyNineTest do
     assert NinetyNine.is_palindrome([1, 2, 2, 1]) == true
     assert NinetyNine.is_palindrome(["x", "a", "m", "a", "x"]) == true
     assert NinetyNine.is_palindrome([1, 2, 4, 8, 16, 8, 4, 2, 1]) == true
+  end
+
+  test "[07] Should return a flattened list" do
+    assert NinetyNine.flatten([1, [2, 3]]) == [1, 2, 3]
+    assert NinetyNine.flatten(["a", ["b", ["c", "d"], "e"]]) == ["a", "b", "c", "d", "e"]
+    assert NinetyNine.flatten([[["a"]]]) == ["a"]
   end
 end

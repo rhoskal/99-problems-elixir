@@ -91,4 +91,19 @@ defmodule NinetyNine do
 
   def is_palindrome([x | xs]),
     do: x == List.last(xs) and is_palindrome(List.delete_at(xs, Kernel.length(xs) - 1))
+
+  @doc """
+  Problem 7
+
+  Flatten a nested list structure.
+
+  ## Examples
+
+      iex> NinetyNine.flatten([1, [2, 3]])
+      [1, 2, 3]
+
+  """
+  def flatten([]), do: []
+  def flatten([x | xs]), do: flatten(x) ++ flatten(xs)
+  def flatten(x), do: [x]
 end

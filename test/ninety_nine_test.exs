@@ -21,4 +21,10 @@ defmodule NinetyNineTest do
     assert NinetyNine.element_at(2, [1, 2]) == 2
     assert NinetyNine.element_at(2, ["a", "b", "c", "d", "e"]) == "b"
   end
+
+  test "[04] Should return the number of elements in a list" do
+    assert NinetyNine.my_length([]) == 0
+    assert NinetyNine.my_length([1]) == 1
+    assert NinetyNine.my_length(Enum.to_list(1..10)) == 10
+  end
 end

@@ -16,7 +16,7 @@ defmodule NinetyNine do
   """
   def last([]), do: nil
   def last([x]), do: x
-  def last([_ | tail]), do: last(tail)
+  def last([_ | xs]), do: last(xs)
 
   @doc """
   Problem 2
@@ -31,7 +31,7 @@ defmodule NinetyNine do
   """
   def last_two([]), do: nil
   def last_two([x, y]), do: [x, y]
-  def last_two([_ | tail]), do: last_two(tail)
+  def last_two([_ | xs]), do: last_two(xs)
 
   @doc """
   Problem 3
@@ -47,4 +47,18 @@ defmodule NinetyNine do
   def element_at(_, []), do: nil
   def element_at(n, [x | _]) when n == 1, do: x
   def element_at(n, [_ | xs]), do: element_at(n - 1, xs)
+
+  @doc """
+  Problem 4
+
+  Find the number of elements in a list.
+
+  ## Examples
+
+      iex> NinetyNine.my_length([1, 2, 3])
+      3
+
+  """
+  def my_length([]), do: 0
+  def my_length([_ | xs]), do: 1 + my_length(xs)
 end

@@ -32,4 +32,14 @@ defmodule NinetyNineTest do
     assert NinetyNine.my_reverse([]) == []
     assert NinetyNine.my_reverse(Enum.to_list(1..5)) == [5, 4, 3, 2, 1]
   end
+
+  test "[06] Should return true if a list is a palindrome" do
+    assert NinetyNine.is_palindrome([]) == true
+    assert NinetyNine.is_palindrome([1]) == true
+    assert NinetyNine.is_palindrome([1, 2, 3]) == false
+    assert NinetyNine.is_palindrome(["a", "b", "a"]) == true
+    assert NinetyNine.is_palindrome([1, 2, 2, 1]) == true
+    assert NinetyNine.is_palindrome(["x", "a", "m", "a", "x"]) == true
+    assert NinetyNine.is_palindrome([1, 2, 4, 8, 16, 8, 4, 2, 1]) == true
+  end
 end

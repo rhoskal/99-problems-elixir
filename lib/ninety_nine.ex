@@ -74,4 +74,21 @@ defmodule NinetyNine do
 
   """
   def my_reverse(xs), do: List.foldl(xs, [], fn x, acc -> [x | acc] end)
+
+  @doc """
+  Problem 6
+
+  Determine if a list is a palindrome.
+
+  ## Examples
+
+      iex> NinetyNine.is_palindrome(["a", "b", "a"])
+      true
+
+  """
+  def is_palindrome([]), do: true
+  def is_palindrome([_]), do: true
+
+  def is_palindrome([x | xs]),
+    do: x == List.last(xs) and is_palindrome(List.delete_at(xs, Kernel.length(xs) - 1))
 end

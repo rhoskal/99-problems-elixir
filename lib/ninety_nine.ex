@@ -7,6 +7,7 @@ defmodule NinetyNine do
   Problem 1
 
   Return the last element of a list.
+  Note: equivalent native fn is `List.last/2`
 
   ## Examples
 
@@ -37,6 +38,7 @@ defmodule NinetyNine do
   Problem 3
 
   Find the nth element of a list. The first element in the list is number 1.
+  Note: equivalent native fn is `List.insert_at/3`
 
   ## Examples
 
@@ -52,6 +54,7 @@ defmodule NinetyNine do
   Problem 4
 
   Find the number of elements in a list.
+  Note: equivalent native fn is `Enum.count/1` or `Kernel.length/1`
 
   ## Examples
 
@@ -66,6 +69,7 @@ defmodule NinetyNine do
   Problem 5
 
   Reverse items in a list.
+  Note: equivalent native fn is `Enum.reverse/1`
 
   ## Examples
 
@@ -90,12 +94,13 @@ defmodule NinetyNine do
   def is_palindrome([_]), do: true
 
   def is_palindrome([x | xs]),
-    do: x == List.last(xs) and is_palindrome(List.delete_at(xs, Kernel.length(xs) - 1))
+    do: x == List.last(xs) and is_palindrome(List.delete_at(xs, Enum.count(xs) - 1))
 
   @doc """
   Problem 7
 
   Flatten a nested list structure.
+  Note: equivalent native fn is `List.flatten/1`
 
   ## Examples
 
@@ -111,6 +116,7 @@ defmodule NinetyNine do
   Problem 8
 
   Eliminate consecutive duplicates of list elements.
+  Note: equivalent native fn is `Enum.dedup/1`
 
   ## Examples
 

@@ -13,4 +13,12 @@ defmodule NinetyNineTest do
     assert NinetyNine.last_two([true]) == nil
     assert NinetyNine.last_two([1, 2, 3]) == [2, 3]
   end
+
+  test "[03] Should return the nth element of a list" do
+    assert NinetyNine.element_at(-2, [1, 2]) == nil
+    assert NinetyNine.element_at(0, [1, 2]) == nil
+    assert NinetyNine.element_at(2, []) == nil
+    assert NinetyNine.element_at(2, [1, 2]) == 2
+    assert NinetyNine.element_at(2, ["a", "b", "c", "d", "e"]) == "b"
+  end
 end

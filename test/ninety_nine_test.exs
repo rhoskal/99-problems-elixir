@@ -69,4 +69,11 @@ defmodule NinetyNineTest do
              "e"
            ]) == ["a", "b", "c", "a", "d", "e"]
   end
+
+  test "[09] Should pack/combine duplicates" do
+    assert NinetyNine.pack(["a", "a", "b", "c", "c"]) == ["aa", "b", "cc"]
+
+    assert NinetyNine.pack(["a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e"]) ==
+             ["aaaa", "b", "cc", "aa", "d", "eeee"]
+  end
 end

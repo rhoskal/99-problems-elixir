@@ -122,4 +122,23 @@ defmodule NinetyNine do
 
   def compress([head | tail]),
     do: [head] ++ compress(Enum.drop_while(tail, fn x -> x == head end))
+
+  @doc """
+  Problem 9
+
+  Pack consecutive duplicates of list elements into sublists.
+
+  ## Examples
+
+      iex> NinetyNine.pack(["a", "a", "b", "c", "c"])
+      ["aa", "b", "cc"]
+
+  """
+  @spec pack([String.t()]) :: [String.t()]
+  def pack([]), do: []
+
+  def pack(xs) do
+    {matches, rest} = Enum.split_while(xs, fn x -> x == List.first(xs) end)
+    [Enum.join(matches)] ++ pack(rest)
+  end
 end

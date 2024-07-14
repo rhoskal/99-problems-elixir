@@ -177,10 +177,28 @@ defmodule NinetyNine do
       count = Enum.count(xs, &(&1 == key))
 
       case acc do
-        %{} -> Map.put(acc, key, count)
-        _ -> %{acc | key => count}
+        %{^key => _} ->
+          %{acc | key => count}
+
+        %{} ->
+          Map.put(acc, key, count)
       end
     end)
   end
-end
 
+  # # Recursive solution
+  # def encode(xs) do
+  #   encode_helper(xs, %{})
+  # end
+  # defp encode_helper([], acc), do: acc
+  # defp encode_helper(xs, acc) do
+  #   key = List.first(xs)
+  #   {matches, rest} = Enum.split_with(xs, &(&1 == key))
+  #   count = Enum.count(matches)
+
+  #   case acc do
+  #     %{^key => _} -> encode_helper(rest, %{acc | key => count})
+  #     %{} -> encode_helper(rest, Map.put(acc, key, count))
+  #   end
+  # end
+end

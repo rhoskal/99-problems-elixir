@@ -202,4 +202,8 @@ defmodule NinetyNineTest do
     assert NinetyNine.range(5, 1) == []
     assert NinetyNine.range(1, 1) == [1]
   end
+
+  test "[23] Should get random selection" do
+    assert Kernel.length(NinetyNine.rnd_select([1, 2, 3, 4, 5], 5)) == 5
+  end
 end

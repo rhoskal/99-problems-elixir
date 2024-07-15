@@ -419,7 +419,7 @@ defmodule NinetyNine do
   @doc """
   Problem 22
 
-  Rotate a list n places to the left.
+  Create a list containing all integers within a given range.
 
   ## Examples
 
@@ -430,4 +430,25 @@ defmodule NinetyNine do
   @spec range(integer(), integer()) :: list()
   def range(start, stop) when stop < start, do: []
   def range(start, stop), do: [start] ++ range(start + 1, stop)
+
+  @doc """
+  Problem 23
+
+  Extract a given number of randomly selected elements from a list.
+  It's not clear if duplicates are allowed.
+
+  ## Examples
+
+      iex> NinetyNine.rnd_select([1, 2, 3, 4, 5], 2)
+
+  """
+  @spec rnd_select(list(), integer()) :: list()
+  def rnd_select(_, 0), do: []
+  def rnd_select([], _), do: []
+
+  def rnd_select(xs, n) do
+    random = :rand.uniform(Kernel.length(xs) - 1)
+
+    [Enum.fetch!(xs, random)] ++ rnd_select(xs, n - 1)
+  end
 end

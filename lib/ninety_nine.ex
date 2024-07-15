@@ -778,4 +778,19 @@ defmodule NinetyNine do
   @spec gcd(integer(), integer()) :: integer()
   def gcd(a, b) when a == 0, do: b
   def gcd(a, b), do: gcd(rem(abs(b), abs(a)), abs(a))
+
+  @doc """
+  Problem 38
+
+  Determine whether two positive integer numbers are coprime.
+  Note: two numbers are coprime if their greatest common divisor equals 1.
+
+  ## Examples
+
+      iex> NinetyNine.coprime(4, 30)
+      false
+
+  """
+  @spec coprime(integer(), integer()) :: boolean()
+  def coprime(a, b), do: gcd(a, b) == 1
 end

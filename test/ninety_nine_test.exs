@@ -380,4 +380,11 @@ defmodule NinetyNineTest do
     assert NinetyNine.gcd(-3, 6) == 3
     assert NinetyNine.gcd(234, 42) == 6
   end
+
+  test "[38] Should return true if two numbers are coprime" do
+    assert NinetyNine.coprime(35, 64) == true
+    assert NinetyNine.coprime(15, 8) == true
+    assert NinetyNine.coprime(3, 20) == true
+    assert NinetyNine.coprime(5, 12) == true
+  end
 end

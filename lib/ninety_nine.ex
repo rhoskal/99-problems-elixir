@@ -689,5 +689,25 @@ defmodule NinetyNine do
 
   """
   @spec primes_from(integer(), integer()) :: [integer()]
-  def primes_from(lower, upper), do: Enum.to_list(lower..upper) |> Enum.filter(&prime?/1)
+  def primes_from(lower, upper),
+    do:
+      Enum.to_list(lower..upper)
+      |> Enum.filter(&prime?/1)
+
+  @doc """
+  Problem 35
+
+  Goldbach's conjecture - finds two prime numbers that sum up to a given even integer.
+
+  ## Examples
+
+      iex> NinetyNine.goldbach(30)
+      {7, 23}
+
+  """
+  @spec goldbach(integer()) :: {integer(), integer()}
+  def goldbach(n),
+    do:
+      for(x <- primes_from(3, n - 2), y = n - x, prime?(y), do: {x, y})
+      |> List.first()
 end

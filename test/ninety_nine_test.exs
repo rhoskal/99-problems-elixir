@@ -355,4 +355,9 @@ defmodule NinetyNineTest do
     assert NinetyNine.primes_from(50, 100) == [53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
     assert length(NinetyNine.primes_from(2, 7920)) == 1000
   end
+
+  test "[35] Should return two primes that sum to the given even number" do
+    assert NinetyNine.goldbach(28) == {5, 23}
+    assert NinetyNine.goldbach(60) == {7, 53}
+  end
 end

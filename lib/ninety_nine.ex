@@ -806,7 +806,22 @@ defmodule NinetyNine do
 
   """
   @spec totient_phi(integer()) :: integer()
-  def totient_phi(n), do:
-    length(for i <- 1..n, coprime(n, i), do: i)
+  def totient_phi(n), do: length(for i <- 1..n, coprime(n, i), do: i)
 
+  @doc """
+  Problem 40
+
+  Calculate Euler's totient function phi(m) - improved.
+
+  ## Examples
+
+      iex> NinetyNine.phi(30)
+      8
+
+  """
+  @spec phi(integer()) :: integer()
+  def phi(n),
+    do:
+      for({p, m} <- prime_factors_mult(n), do: (p - 1) * round(:math.pow(p, m - 1)))
+      |> Enum.reduce(1, fn x, acc -> x * acc end)
 end

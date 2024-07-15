@@ -395,4 +395,10 @@ defmodule NinetyNineTest do
     assert NinetyNine.totient_phi(20) == 8
   end
 
+  test "[40] Should return the totient using the improved method" do
+    assert NinetyNine.phi(10) == 4
+    assert NinetyNine.phi(13) == 12
+    assert NinetyNine.phi(9) == 6
+    assert NinetyNine.phi(20) == 8
+  end
 end

@@ -338,6 +338,6 @@ defmodule NinetyNine do
 
   """
   @spec split(Enumerable.t(), integer()) :: [] | {list(), list()}
-  def split(_, n) when n == 0, do: []
+  def split(xs, n) when n <= 0, do: {[], xs}
   def split(xs, n), do: {Enum.take(xs, n), Enum.drop(xs, n)}
 end

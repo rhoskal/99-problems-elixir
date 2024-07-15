@@ -91,16 +91,16 @@ defmodule NinetyNine do
 
   ## Examples
 
-      iex> NinetyNine.is_palindrome(["a", "b", "a"])
+      iex> NinetyNine.palindrome?(["a", "b", "a"])
       true
 
   """
-  @spec is_palindrome(Enumerable.t()) :: boolean()
-  def is_palindrome([]), do: true
-  def is_palindrome([_]), do: true
+  @spec palindrome?(Enumerable.t()) :: boolean()
+  def palindrome?([]), do: true
+  def palindrome?([_]), do: true
 
-  def is_palindrome([x | xs]),
-    do: x == List.last(xs) and is_palindrome(List.delete_at(xs, Enum.count(xs) - 1))
+  def palindrome?([x | xs]),
+    do: x == List.last(xs) and palindrome?(List.delete_at(xs, Enum.count(xs) - 1))
 
   @doc """
   Problem 7
@@ -451,4 +451,17 @@ defmodule NinetyNine do
 
     [Enum.fetch!(xs, random)] ++ rnd_select(xs, n - 1)
   end
+
+  @doc """
+  Problem 24
+
+  Extract n different random numbers from the set 1..M.
+
+  ## Examples
+
+      iex> NinetyNine.lotto_select(2, 5)
+
+  """
+  @spec lotto_select(integer(), integer()) :: list()
+  def lotto_select(n, m), do: rnd_select(Enum.to_list(1..m), n)
 end

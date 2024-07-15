@@ -34,13 +34,13 @@ defmodule NinetyNineTest do
   end
 
   test "[06] Should return true if a list is a palindrome" do
-    assert NinetyNine.is_palindrome([]) == true
-    assert NinetyNine.is_palindrome([1]) == true
-    assert NinetyNine.is_palindrome([1, 2, 3]) == false
-    assert NinetyNine.is_palindrome(["a", "b", "a"]) == true
-    assert NinetyNine.is_palindrome([1, 2, 2, 1]) == true
-    assert NinetyNine.is_palindrome(["x", "a", "m", "a", "x"]) == true
-    assert NinetyNine.is_palindrome([1, 2, 4, 8, 16, 8, 4, 2, 1]) == true
+    assert NinetyNine.palindrome?([]) == true
+    assert NinetyNine.palindrome?([1]) == true
+    assert NinetyNine.palindrome?([1, 2, 3]) == false
+    assert NinetyNine.palindrome?(["a", "b", "a"]) == true
+    assert NinetyNine.palindrome?([1, 2, 2, 1]) == true
+    assert NinetyNine.palindrome?(["x", "a", "m", "a", "x"]) == true
+    assert NinetyNine.palindrome?([1, 2, 4, 8, 16, 8, 4, 2, 1]) == true
   end
 
   test "[07] Should return a flattened list" do
@@ -205,5 +205,9 @@ defmodule NinetyNineTest do
 
   test "[23] Should get random selection" do
     assert Kernel.length(NinetyNine.rnd_select([1, 2, 3, 4, 5], 5)) == 5
+  end
+
+  test "[24] Should get random selection" do
+    assert Kernel.length(NinetyNine.lotto_select(6, 49)) == 6
   end
 end

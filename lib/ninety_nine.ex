@@ -500,4 +500,69 @@ defmodule NinetyNine do
         do: [Enum.at(xs, i) | x]
   end
 
+  @doc """
+  Problem 27
+
+  Group the elements of a set into 3 disjoint subsets.
+
+  ## Examples
+
+      iex> NinetyNine.group3([1, 2, 3, 4])
+      [ [[1, 2, 3]],
+        [[1, 2, 4]],
+        [[1, 3, 4]],
+        [[2, 3, 4]]
+      ]
+
+  """
+  @spec group3(Enumerable.t()) :: [[[term()]]]
+  def group3(xs), do: group([3], xs)
+
+  @doc """
+  Problem 28
+
+  Generalized `group3` specifying a list of group sizes and the predicate will return a list of groups.
+
+  ## Examples
+
+      iex> NinetyNine.group([2, 1], ["a", "b", "c", "d"])
+      [ [["a", "b"], ["c"]],
+        [["a", "b"], ["d"]],
+        [["a", "c"], ["b"]],
+        [["a", "c"], ["d"]],
+        [["a", "d"], ["b"]],
+        [["a", "d"], ["c"]],
+        [["b", "c"], ["a"]],
+        [["b", "c"], ["d"]],
+        [["b", "d"], ["a"]],
+        [["b", "d"], ["c"]],
+        [["c", "d"], ["a"]],
+        [["c", "d"], ["b"]]
+      ]
+
+  """
+  @spec group([integer()], Enumerable.t()) :: [[[term()]]]
+  def group([], _), do: [[]]
+
+  def group([n | ns], xs) do
+    for {g, rs} <- _combinations(n, xs),
+        gs <- group(ns, rs),
+        do: [g | gs]
+  end
+
+  @spec _combinations(integer(), Enumerable.t()) :: [[[term()]]]
+  defp _combinations(0, xs), do: [{[], xs}]
+  defp _combinations(_, []), do: []
+
+  defp _combinations(n, [x | xs]) do
+    selected =
+      for {ys, zs} <- _combinations(n - 1, xs),
+          do: {[x | ys], zs}
+
+    remaining =
+      for {ys, zs} <- _combinations(n, xs),
+          do: {ys, [x | zs]}
+
+    selected ++ remaining
+  end
 end

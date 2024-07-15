@@ -253,4 +253,69 @@ defmodule NinetyNineTest do
              ]
   end
 
+  test "[27] Should return combinations of length 3" do
+    assert Kernel.length(
+             NinetyNine.group3([
+               "aldo",
+               "beat",
+               "carla",
+               "david",
+               "evi",
+               "flip",
+               "gary",
+               "hugo",
+               "ida"
+             ])
+           ) == 84
+
+    assert Kernel.length(NinetyNine.group3(Enum.to_list(1..6))) == 20
+
+    assert NinetyNine.group3(Enum.to_list(1..4)) ==
+             [[[1, 2, 3]], [[1, 2, 4]], [[1, 3, 4]], [[2, 3, 4]]]
+  end
+
+  test "[28] Should handle a generalized `group3`" do
+    assert Kernel.length(
+             NinetyNine.group([2, 3, 4], [
+               "aldo",
+               "beat",
+               "carla",
+               "david",
+               "evi",
+               "flip",
+               "gary",
+               "hugo",
+               "ida"
+             ])
+           ) == 1260
+
+    assert Kernel.length(
+             NinetyNine.group([2, 2, 5], [
+               "aldo",
+               "beat",
+               "carla",
+               "david",
+               "evi",
+               "flip",
+               "gary",
+               "hugo",
+               "ida"
+             ])
+           ) == 756
+
+    assert NinetyNine.group([2, 1], ["a", "b", "c", "d"]) == [
+             [["a", "b"], ["c"]],
+             [["a", "b"], ["d"]],
+             [["a", "c"], ["b"]],
+             [["a", "c"], ["d"]],
+             [["a", "d"], ["b"]],
+             [["a", "d"], ["c"]],
+             [["b", "c"], ["a"]],
+             [["b", "c"], ["d"]],
+             [["b", "d"], ["a"]],
+             [["b", "d"], ["c"]],
+             [["c", "d"], ["a"]],
+             [["c", "d"], ["b"]]
+           ]
+  end
 end

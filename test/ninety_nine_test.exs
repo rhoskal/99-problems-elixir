@@ -331,6 +331,7 @@ defmodule NinetyNineTest do
 
   test "[31] Should return true if given number is prime" do
     assert NinetyNine.prime?(0) == false
+    assert NinetyNine.prime?(2) == true
     assert NinetyNine.prime?(4) == false
     assert NinetyNine.prime?(7) == true
     assert NinetyNine.prime?(17) == true
@@ -348,5 +349,11 @@ defmodule NinetyNineTest do
     assert NinetyNine.prime_factors_mult(315) == [{3, 2}, {5, 1}, {7, 1}]
     assert NinetyNine.prime_factors_mult(35) == [{5, 1}, {7, 1}]
     assert NinetyNine.prime_factors_mult(820) == [{2, 2}, {5, 1}, {41, 1}]
+  end
+
+  test "[34] Should return a list of primes within a range" do
+    assert NinetyNine.primes_from(10, 20) == [11, 13, 17, 19]
+    assert NinetyNine.primes_from(50, 100) == [53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+    assert length(NinetyNine.primes_from(2, 7920)) == 1000
   end
 end

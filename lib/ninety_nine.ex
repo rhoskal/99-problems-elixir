@@ -662,7 +662,6 @@ defmodule NinetyNine do
   Problem 33
 
   Determine the prime factors and their multiplicities of a given positive integer.
-  Note: using `groupBy` instead of `group` from `Data.List` to avoid naming collision
 
   ## Examples
 
@@ -676,4 +675,18 @@ defmodule NinetyNine do
       prime_factors(n)
       |> Enum.frequencies()
       |> Map.to_list()
+
+  @doc """
+  Problem 34
+
+  Given a range of integers by its lower and upper limit, construct a list of all prime numbers in that range.
+
+  ## Examples
+
+      iex> NinetyNine.primes_from(5, 30)
+      [5, 7, 11, 13, 17, 19, 23, 29]
+
+  """
+  @spec primes_from(integer(), integer()) :: [integer()]
+  def primes_from(lower, upper), do: Enum.to_list(lower..upper) |> Enum.filter(&prime?/1)
 end

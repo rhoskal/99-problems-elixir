@@ -190,4 +190,10 @@ defmodule NinetyNineTest do
     assert NinetyNine.remove_at(["a", "b", "c", "d"], 2) == ["a", "c", "d"]
     assert NinetyNine.remove_at(["a", "b", "c", "d"], -1) == ["a", "b", "c", "d"]
   end
+
+  test "[21] Should insert at nth position" do
+    assert NinetyNine.insert_at("X", ["a", "b", "c", "d"], 2) == ["a", "b", "X", "c", "d"]
+    assert NinetyNine.insert_at("X", ["a", "b", "c", "d"], -1) == ["a", "b", "c", "d"]
+    assert NinetyNine.insert_at("X", ["a", "b", "c", "d"], 99) == ["a", "b", "c", "d", "X"]
+  end
 end

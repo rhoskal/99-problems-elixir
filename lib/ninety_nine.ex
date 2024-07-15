@@ -396,4 +396,23 @@ defmodule NinetyNine do
   @spec remove_at(Enumerable.t(), integer()) :: list()
   def remove_at(xs, n) when n < 0, do: xs
   def remove_at(xs, n), do: Enum.take(xs, n - 1) ++ Enum.drop(xs, n)
+
+  @doc """
+  Problem 21
+
+  Inserts an element at the nth position.
+  Start counting list elements with 0. If the position is larger or equal to
+  the length of the list, insert the element at the end.
+  (The behavior is unspecified if the position is negative.)
+
+  ## Examples
+
+      iex> NinetyNine.insert_at(9, [1, 2, 3, 4, 5, 6, 7], 4)
+      [1, 2, 3, 4, 9, 5, 6, 7]
+
+  """
+  @spec insert_at(term(), Enumerable.t(), integer()) :: list()
+  def insert_at(_, xs, n) when n < 0, do: xs
+  def insert_at(val, xs, n) when n > Kernel.length(xs), do: xs ++ [val]
+  def insert_at(val, xs, n), do: Enum.take(xs, n) ++ [val] ++ Enum.drop(xs, n)
 end

@@ -634,4 +634,26 @@ defmodule NinetyNine do
     |> List.insert_at(0, 2)
     |> Enum.all?(&(rem(n, &1) != 0))
   end
+
+  @doc """
+  Problem 32
+
+  Determine the prime factors of a given positive integer.
+  Returns a flat list containing the prime factors in ascending order.
+
+  ## Examples
+
+      iex> NinetyNine.prime_factors(65)
+      [5, 13]
+
+  """
+  @spec prime_factors(integer()) :: [integer()]
+  def prime_factors(n), do: prime_factors_helper(n, 2)
+
+  defp prime_factors_helper(num, _divisor) when num == 1, do: []
+
+  defp prime_factors_helper(num, divisor) when rem(num, divisor) == 0,
+    do: [divisor | prime_factors_helper(div(num, divisor), divisor)]
+
+  defp prime_factors_helper(num, divisor), do: prime_factors_helper(num, divisor + 1)
 end

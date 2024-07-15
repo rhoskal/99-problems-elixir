@@ -337,4 +337,10 @@ defmodule NinetyNineTest do
     assert NinetyNine.prime?(47) == true
     assert NinetyNine.prime?(223) == true
   end
+
+  test "[32] Should calculate the prime factors" do
+    assert NinetyNine.prime_factors(315) == [3, 3, 5, 7]
+    assert NinetyNine.prime_factors(35) == [5, 7]
+    assert NinetyNine.prime_factors(820) == [2, 2, 5, 41]
+  end
 end

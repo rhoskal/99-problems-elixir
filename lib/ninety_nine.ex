@@ -705,7 +705,7 @@ defmodule NinetyNine do
       {7, 23}
 
   """
-  @spec goldbach(integer()) :: {integer(), integer()}
+  @spec goldbach(integer()) :: {integer(), integer()} | nil
   def goldbach(n),
     do:
       for(x <- primes_from(3, n - 2), y = n - x, prime?(y), do: {x, y})

@@ -324,4 +324,8 @@ defmodule NinetyNineTest do
              ["o", "de", "de", "mn", "abc", "fgh", "ijkl"]
   end
 
+  test "[30] Should return elements sorted by least frequency lengths first" do
+    assert NinetyNine.lfsort(["abc", "de", "fgh", "de", "ijkl", "mn", "o"]) ==
+             ["ijkl", "o", "abc", "fgh", "de", "de", "mn"]
+  end
 end

@@ -587,4 +587,28 @@ defmodule NinetyNine do
     |> List.flatten()
   end
 
+  @doc """
+  Problem 30
+
+  Sort the elements of a list according to their length frequency.
+  e.g. in the default, where sorting is done ascendingly, lists with rare
+  lengths are placed first, others with a more frequent length come later.
+
+  ## Examples
+
+      iex> NinetyNine.lfsort(["4444", "333", "333", "22", "1"])
+      ["4444", "22", "1", "333", "333"]
+
+  """
+  @spec lfsort(Enumerable.t()) :: list()
+  def lfsort(list) do
+    list
+    |> Enum.sort_by(&frequency(String.length(&1), list))
+  end
+
+  defp frequency(len, list) do
+    list
+    |> Enum.filter(&(String.length(&1) == len))
+    |> length()
+  end
 end

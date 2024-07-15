@@ -8,10 +8,10 @@ defmodule NinetyNineTest do
     assert NinetyNine.last([1, 2, 3]) == 3
   end
 
-  test "[02] Should return the last two elements of a list" do
-    assert NinetyNine.last_two([]) == nil
-    assert NinetyNine.last_two([true]) == nil
-    assert NinetyNine.last_two([1, 2, 3]) == [2, 3]
+  test "[02] Should return the second last element of a list" do
+    assert NinetyNine.second_last([]) == nil
+    assert NinetyNine.second_last([true]) == nil
+    assert NinetyNine.second_last([1, 2, 3]) == 2
   end
 
   test "[03] Should return the nth element of a list" do

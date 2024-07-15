@@ -50,6 +50,10 @@ run: ## Run the web server
 test: ## Test Elixir code
 	mix test
 
+.PHONY: verify
+verify: ## Run dialyzer to verify typespecs
+	mix dialyzer
+
 # Check, lint and format targets
 # ------------------------------
 

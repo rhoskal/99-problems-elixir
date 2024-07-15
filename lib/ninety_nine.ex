@@ -15,7 +15,7 @@ defmodule NinetyNine do
       3
 
   """
-  @spec last([String.t() | Integer.t()]) :: [String.t() | Integer.t()]
+  @spec last(Enumerable.t()) :: term() | nil
   def last([]), do: nil
   def last([x]), do: x
   def last([_ | xs]), do: last(xs)
@@ -23,18 +23,18 @@ defmodule NinetyNine do
   @doc """
   Problem 2
 
-  Find the last two (last and penultimate) elements of a list.
+  Find the second last element of a list.
 
   ## Examples
 
-      iex> NinetyNine.last_two([1, 2, 3])
-      [2, 3]
+      iex> NinetyNine.second_last([1, 2, 3])
+      2
 
   """
-  @spec last_two([String.t() | Integer.t()]) :: [String.t() | Integer.t()]
-  def last_two([]), do: nil
-  def last_two([x, y]), do: [x, y]
-  def last_two([_ | xs]), do: last_two(xs)
+  @spec second_last(Enumerable.t()) :: term() | nil
+  def second_last([]), do: nil
+  def second_last([x, _]), do: x
+  def second_last([_ | xs]), do: second_last(xs)
 
   @doc """
   Problem 3
@@ -48,7 +48,7 @@ defmodule NinetyNine do
       1
 
   """
-  @spec element_at(Integer.t(), List.t()) :: List.t()
+  @spec element_at(non_neg_integer(), Enumerable.t()) :: term() | nil
   def element_at(_, []), do: nil
   def element_at(n, [x | _]) when n == 1, do: x
   def element_at(n, [_ | xs]), do: element_at(n - 1, xs)
@@ -65,7 +65,7 @@ defmodule NinetyNine do
       3
 
   """
-  @spec my_length(List.t()) :: Integer.t()
+  @spec my_length(Enumerable.t()) :: non_neg_integer()
   def my_length([]), do: 0
   def my_length([_ | xs]), do: 1 + my_length(xs)
 
@@ -81,7 +81,7 @@ defmodule NinetyNine do
       [3, 2, 1]
 
   """
-  @spec my_reverse(List.t()) :: List.t()
+  @spec my_reverse(Enumerable.t()) :: list()
   def my_reverse(xs), do: List.foldl(xs, [], fn x, acc -> [x | acc] end)
 
   @doc """
@@ -95,7 +95,7 @@ defmodule NinetyNine do
       true
 
   """
-  @spec is_palindrome(List.t()) :: Boolean.t()
+  @spec is_palindrome(Enumerable.t()) :: boolean()
   def is_palindrome([]), do: true
   def is_palindrome([_]), do: true
 
@@ -114,7 +114,7 @@ defmodule NinetyNine do
       [1, 2, 3]
 
   """
-  @spec flatten(List.t()) :: List.t()
+  @spec flatten(Enumerable.t()) :: list()
   def flatten([]), do: []
   def flatten([x | xs]), do: flatten(x) ++ flatten(xs)
   def flatten(x), do: [x]
@@ -131,7 +131,7 @@ defmodule NinetyNine do
       [1, 2, 3, 4]
 
   """
-  @spec compress(List.t()) :: List.t()
+  @spec compress(Enumerable.t()) :: list()
   def compress([]), do: []
 
   def compress([head | tail]),
@@ -148,7 +148,7 @@ defmodule NinetyNine do
       ["aa", "b", "cc"]
 
   """
-  @spec pack(List.t()) :: [String.t()]
+  @spec pack(Enumerable.t()) :: [String.t()]
   def pack([]), do: []
 
   def pack(xs) do
@@ -169,7 +169,7 @@ defmodule NinetyNine do
       %{"a" => 2, "b" => 1, "c" => 2}
 
   """
-  @spec encode(List.t()) :: Map.t(Term.t(), Integer.t())
+  @spec encode(Enumerable.t()) :: map()
   def encode(xs) do
     xs
     |> Enum.uniq()
@@ -214,8 +214,8 @@ defmodule NinetyNine do
       [{:multiple_encode, "a", 2}, {:single_encode, "b"}, {:multiple_encode, "c", 2}]
 
   """
-  @spec encode_modified(List.t()) :: [
-          Atom.t(:multiple_encode | :single_encode, Term.t(), Integer.t())
+  @spec encode_modified(Enumerable.t()) :: [
+          {:multiple_encode | :single_encode, term(), integer()}
         ]
   def encode_modified(xs) do
     xs

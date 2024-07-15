@@ -112,4 +112,18 @@ defmodule NinetyNineTest do
            ]) ==
              [1, 1, 2, 3, 3]
   end
+
+  test "[13] Should encode duplicates directly" do
+    assert NinetyNine.encode_direct(["a", "a", "b", "c", "c"]) == [
+             {:multiple_encode, "a", 2},
+             {:single_encode, "b"},
+             {:multiple_encode, "c", 2}
+           ]
+
+    assert NinetyNine.encode_direct([1, 1, 2, 3, 3]) == [
+             {:multiple_encode, 1, 2},
+             {:single_encode, 2},
+             {:multiple_encode, 3, 2}
+           ]
+  end
 end

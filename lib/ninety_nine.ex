@@ -249,4 +249,35 @@ defmodule NinetyNine do
 
   def decode_modified([{:multiple_encode, val, count} | rest]),
     do: List.duplicate(val, count) ++ decode_modified(rest)
+
+  @doc """
+  Problem 13
+
+  Run-length encoding of a list (direct solution).
+  Implement the so-called run-length encoding data compression method directly.
+
+  ## Examples
+
+      iex> NinetyNine.encode_direct([1, 1, 2, 3, 3])
+      [{:multiple_encode, 1, 2}, {:single_encode, 2}, {:multiple_encode, 3, 2}]
+
+  """
+  @spec encode_direct(Enumerable.t()) :: [
+          {:multiple_encode | :single_encode, term(), integer()}
+        ]
+  def encode_direct([]), do: []
+
+  def encode_direct(xs) do
+    current = List.first(xs)
+    {matches, rest} = Enum.split_with(xs, &(&1 == current))
+    count = Enum.count(matches)
+
+    encoded =
+      case count == 1 do
+        true -> {:single_encode, current}
+        false -> {:multiple_encode, current, count}
+      end
+
+    [encoded] ++ encode_direct(rest)
+  end
 end

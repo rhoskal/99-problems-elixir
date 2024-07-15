@@ -325,4 +325,19 @@ defmodule NinetyNine do
   @spec drop_every(Enumerable.t(), integer()) :: list()
   def drop_every([], _), do: []
   def drop_every(xs, n), do: Enum.take(xs, n - 1) ++ drop_every(Enum.drop(xs, n), n)
+
+  @doc """
+  Problem 17
+
+  Splits a list into two parts; the length of the first part is given.
+
+  ## Examples
+
+      iex> NinetyNine.split([1, 2, 3, 4, 5, 6, 7], 2)
+      {[1, 2], [3, 4, 5, 6, 7]}
+
+  """
+  @spec split(Enumerable.t(), integer()) :: [] | {list(), list()}
+  def split(_, n) when n == 0, do: []
+  def split(xs, n), do: {Enum.take(xs, n), Enum.drop(xs, n)}
 end

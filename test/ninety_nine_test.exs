@@ -158,4 +158,11 @@ defmodule NinetyNineTest do
     assert NinetyNine.drop_every(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"], 3) ==
              ["a", "b", "d", "e", "g", "h", "j", "k"]
   end
+
+  test "[17] Should split a given list into 2 parts" do
+    assert NinetyNine.split(Enum.to_list(1..10), 0) == []
+
+    assert NinetyNine.split(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"], 3) ==
+             {["a", "b", "c"], ["d", "e", "f", "g", "h", "i", "j", "k"]}
+  end
 end

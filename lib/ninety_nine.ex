@@ -362,4 +362,21 @@ defmodule NinetyNine do
   @spec slice(Enumerable.t(), integer(), integer()) :: list()
   def slice(_, start, stop) when stop <= start, do: []
   def slice(xs, start, stop), do: Enum.drop(xs, start - 1) |> Enum.take(stop - start + 1)
+
+  @doc """
+  Problem 19
+
+  Rotate a list n places to the left.
+
+  ## Examples
+
+      iex> NinetyNine.rotate([1, 2, 3, 4, 5, 6, 7], 2)
+      [3, 4, 5, 6, 7, 1, 2]
+
+  """
+  @spec rotate(Enumerable.t(), integer()) :: {list(), list()}
+  def rotate(xs, n) when n < 0,
+    do: Enum.drop(xs, n + Enum.count(xs)) ++ Enum.take(xs, n + Enum.count(xs))
+
+  def rotate(xs, n), do: Enum.drop(xs, n) ++ Enum.take(xs, n)
 end

@@ -177,4 +177,12 @@ defmodule NinetyNineTest do
     assert NinetyNine.slice(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"], 3, 7) ==
              ["c", "d", "e", "f", "g"]
   end
+
+  test "[19] Should rotate a list" do
+    assert NinetyNine.rotate(["a", "b", "c", "d", "e", "f", "g", "h"], 3) ==
+             ["d", "e", "f", "g", "h", "a", "b", "c"]
+
+    assert NinetyNine.rotate(["a", "b", "c", "d", "e", "f", "g", "h"], -2) ==
+             ["g", "h", "a", "b", "c", "d", "e", "f"]
+  end
 end

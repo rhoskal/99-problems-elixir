@@ -126,4 +126,11 @@ defmodule NinetyNineTest do
              {:multiple_encode, 3, 2}
            ]
   end
+
+  test "[14] Should duplicate items in a list" do
+    assert NinetyNine.duplicate([1, 2, 3]) == [1, 1, 2, 2, 3, 3]
+
+    assert NinetyNine.duplicate(["a", "b", "c", "c", "d"]) ==
+             ["a", "a", "b", "b", "c", "c", "c", "c", "d", "d"]
+  end
 end

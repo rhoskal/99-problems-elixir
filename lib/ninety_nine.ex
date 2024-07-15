@@ -280,4 +280,19 @@ defmodule NinetyNine do
 
     [encoded] ++ encode_direct(rest)
   end
+
+  @doc """
+  Problem 14
+
+  Duplicate each item in a given list.
+
+  ## Examples
+
+      iex> NinetyNine.duplicate([1, 2, 3])
+      [1, 1, 2, 2, 3, 3]
+
+  """
+  @spec duplicate(Enumerable.t()) :: list()
+  def duplicate([]), do: []
+  def duplicate([head | tail]), do: [head, head] ++ duplicate(tail)
 end

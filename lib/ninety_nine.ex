@@ -710,4 +710,32 @@ defmodule NinetyNine do
     do:
       for(x <- primes_from(3, n - 2), y = n - x, prime?(y), do: {x, y})
       |> List.first()
+
+  @doc """
+  Problem 36
+
+  Given a range of integers by its lower and upper limit, print a list of
+  all even numbers and their Goldbach composition.
+
+  ## Examples
+
+      iex> NinetyNine.goldbach_list(3, 20)
+      [ {4, {2, 2}},
+        {6, {3, 3}},
+        {8, {3, 5}},
+        {10, {3, 7}},
+        {12, {5, 7}},
+        {14, {3, 11}},
+        {16, {3, 13}},
+        {18, {5, 13}},
+        {20, {3, 17}}
+      ]
+
+  """
+  @spec goldbach_list(integer(), integer()) :: [{integer(), {integer(), integer()}}]
+  def goldbach_list(lower, upper) when upper < lower, do: []
+  def goldbach_list(lower, _upper) when lower < 3, do: []
+
+  def goldbach_list(lower, upper),
+    do: for(i <- lower..upper, rem(i, 2) == 0, do: {i, goldbach(i)})
 end

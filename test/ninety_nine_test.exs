@@ -360,4 +360,17 @@ defmodule NinetyNineTest do
     assert NinetyNine.goldbach(28) == {5, 23}
     assert NinetyNine.goldbach(60) == {7, 53}
   end
+
+  test "[36] Should return a list of all even numbers and their Goldbach composition" do
+    assert NinetyNine.goldbach_list(9, 20) == [
+             {10, {3, 7}},
+             {12, {5, 7}},
+             {14, {3, 11}},
+             {16, {3, 13}},
+             {18, {5, 13}},
+             {20, {3, 17}}
+           ]
+
+    assert length(NinetyNine.goldbach_list(3, 3000)) == 1499
+  end
 end

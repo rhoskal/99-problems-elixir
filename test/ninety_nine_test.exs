@@ -318,4 +318,10 @@ defmodule NinetyNineTest do
              [["c", "d"], ["b"]]
            ]
   end
+
+  test "[29] Should return elements sorted by length" do
+    assert NinetyNine.lsort(["abc", "de", "fgh", "de", "ijkl", "mn", "o"]) ==
+             ["o", "de", "de", "mn", "abc", "fgh", "ijkl"]
+  end
+
 end

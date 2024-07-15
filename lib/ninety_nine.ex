@@ -565,4 +565,19 @@ defmodule NinetyNine do
 
     selected ++ remaining
   end
+
+  @doc """
+  Problem 29
+
+  Sort the elements of a list according to their length.
+  e.g. short lists first, longer lists later.
+
+  ## Examples
+
+      iex> NinetyNine.lsort(["4444", "333", "22", "1"])
+      ["1", "22", "333", "4444"]
+
+  """
+  @spec lsort(Enumerable.t()) :: list()
+  def lsort(xs), do: Enum.sort_by(xs, &String.length(&1), :asc)
 end

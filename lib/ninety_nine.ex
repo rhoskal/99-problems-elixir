@@ -579,5 +579,12 @@ defmodule NinetyNine do
 
   """
   @spec lsort(Enumerable.t()) :: list()
-  def lsort(list), do: Enum.sort_by(list, &String.length/1, :asc)
+  def lsort(list) do
+    list
+    |> Enum.group_by(&String.length/1)
+    |> Map.to_list()
+    |> Enum.map(fn {_len, matches} -> Enum.sort(matches) end)
+    |> List.flatten()
+  end
+
 end

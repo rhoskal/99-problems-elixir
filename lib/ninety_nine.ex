@@ -464,4 +464,20 @@ defmodule NinetyNine do
   """
   @spec lotto_select(integer(), integer()) :: list()
   def lotto_select(n, m), do: rnd_select(Enum.to_list(1..m), n)
+
+  @doc """
+  Problem 25
+
+  Generate a random permutation of the elements of a list.
+  Note: this solution does not guarantee uniqueness (distinct elements) from `as`
+
+  ## Examples
+
+      iex> NinetyNine.rnd_permutations([1, 2, 3, 4])
+
+  """
+  @spec rnd_permutations(Enumerable.t()) :: [term()]
+  def rnd_permutations([]), do: []
+  def rnd_permutations(xs), do: rnd_select(xs, Enum.count(xs))
+
 end

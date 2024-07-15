@@ -210,4 +210,9 @@ defmodule NinetyNineTest do
   test "[24] Should get random selection" do
     assert Kernel.length(NinetyNine.lotto_select(6, 49)) == 6
   end
+
+  test "[25] Should generate random permutation" do
+    assert Kernel.length(NinetyNine.rnd_permutations([1, 2, 3, 4, 5])) == 5
+  end
+
 end

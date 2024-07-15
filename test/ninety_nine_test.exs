@@ -373,4 +373,11 @@ defmodule NinetyNineTest do
 
     assert length(NinetyNine.goldbach_list(3, 3000)) == 1499
   end
+
+  test "[37] Should return the gcd of two numbers" do
+    assert NinetyNine.gcd(36, 63) == 9
+    assert NinetyNine.gcd(-3, -6) == 3
+    assert NinetyNine.gcd(-3, 6) == 3
+    assert NinetyNine.gcd(234, 42) == 6
+  end
 end

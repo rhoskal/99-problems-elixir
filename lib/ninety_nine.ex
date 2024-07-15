@@ -762,4 +762,20 @@ defmodule NinetyNine do
   #     %{} -> goldbach_list_helper(rest, Map.put(acc, key, gb))
   #   end
   # end
+
+  @doc """
+  Problem 37
+
+  Determine the greatest common divisor of two positive numbers.
+  Note: uses Euclid's algo
+
+  ## Examples
+
+      iex> NinetyNine.gcd(4, 30)
+      2
+
+  """
+  @spec gcd(integer(), integer()) :: integer()
+  def gcd(a, b) when a == 0, do: b
+  def gcd(a, b), do: gcd(rem(abs(b), abs(a)), abs(a))
 end

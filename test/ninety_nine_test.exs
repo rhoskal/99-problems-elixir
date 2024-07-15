@@ -387,4 +387,12 @@ defmodule NinetyNineTest do
     assert NinetyNine.coprime(3, 20) == true
     assert NinetyNine.coprime(5, 12) == true
   end
+
+  test "[39] Should return the totient" do
+    assert NinetyNine.totient_phi(10) == 4
+    assert NinetyNine.totient_phi(13) == 12
+    assert NinetyNine.totient_phi(9) == 6
+    assert NinetyNine.totient_phi(20) == 8
+  end
+
 end

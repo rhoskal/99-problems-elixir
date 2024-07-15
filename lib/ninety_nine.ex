@@ -793,4 +793,20 @@ defmodule NinetyNine do
   """
   @spec coprime(integer(), integer()) :: boolean()
   def coprime(a, b), do: gcd(a, b) == 1
+
+  @doc """
+  Problem 39
+
+  Calculate Euler's totient function phi(m).
+
+  ## Examples
+
+      iex> NinetyNine.totient_phi(30)
+      8
+
+  """
+  @spec totient_phi(integer()) :: integer()
+  def totient_phi(n), do:
+    length(for i <- 1..n, coprime(n, i), do: i)
+
 end

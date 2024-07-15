@@ -657,4 +657,23 @@ defmodule NinetyNine do
     do: [divisor | prime_factors_helper(div(num, divisor), divisor)]
 
   defp prime_factors_helper(num, divisor), do: prime_factors_helper(num, divisor + 1)
+
+  @doc """
+  Problem 33
+
+  Determine the prime factors and their multiplicities of a given positive integer.
+  Note: using `groupBy` instead of `group` from `Data.List` to avoid naming collision
+
+  ## Examples
+
+      iex> NinetyNine.prime_factors_mult(65)
+      [{5, 1}, {13, 1}]
+
+  """
+  @spec prime_factors_mult(integer()) :: [{integer(), integer()}]
+  def prime_factors_mult(n),
+    do:
+      prime_factors(n)
+      |> Enum.frequencies()
+      |> Map.to_list()
 end

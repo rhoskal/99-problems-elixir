@@ -343,4 +343,10 @@ defmodule NinetyNineTest do
     assert NinetyNine.prime_factors(35) == [5, 7]
     assert NinetyNine.prime_factors(820) == [2, 2, 5, 41]
   end
+
+  test "[33] Should calculate the prime factors and multiplicities" do
+    assert NinetyNine.prime_factors_mult(315) == [{3, 2}, {5, 1}, {7, 1}]
+    assert NinetyNine.prime_factors_mult(35) == [{5, 1}, {7, 1}]
+    assert NinetyNine.prime_factors_mult(820) == [{2, 2}, {5, 1}, {41, 1}]
+  end
 end

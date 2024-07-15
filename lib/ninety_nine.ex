@@ -310,4 +310,19 @@ defmodule NinetyNine do
   @spec replicate(Enumerable.t(), integer()) :: list()
   def replicate([], _), do: []
   def replicate([head | tail], n), do: List.duplicate(head, n) ++ replicate(tail, n)
+
+  @doc """
+  Problem 16
+
+  Drop every nth item in a given list.
+
+  ## Examples
+
+      iex> NinetyNine.drop_every([1, 2, 3, 4, 5, 6, 7], 2)
+      [1, 3, 5, 7]
+
+  """
+  @spec drop_every(Enumerable.t(), integer()) :: list()
+  def drop_every([], _), do: []
+  def drop_every(xs, n), do: Enum.take(xs, n - 1) ++ drop_every(Enum.drop(xs, n), n)
 end

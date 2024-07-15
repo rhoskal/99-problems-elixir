@@ -50,7 +50,8 @@ defmodule NinetyNineTest do
   end
 
   test "[08] Should remove consecutive duplicates" do
-    assert NinetyNine.compress(["a", "a", "b", "c", "c"]) == ["a", "b", "c"]
+    assert NinetyNine.compress(["a", "a", "b", "c", "c"]) ==
+             ["a", "b", "c"]
 
     assert NinetyNine.compress([
              "a",
@@ -67,20 +68,27 @@ defmodule NinetyNineTest do
              "e",
              "e",
              "e"
-           ]) == ["a", "b", "c", "a", "d", "e"]
+           ]) ==
+             ["a", "b", "c", "a", "d", "e"]
   end
 
   test "[09] Should pack/combine duplicates" do
-    assert NinetyNine.pack(["a", "a", "b", "c", "c"]) == ["aa", "b", "cc"]
-    assert NinetyNine.pack([1, 1, 2, 3, 3]) == ["11", "2", "33"]
+    assert NinetyNine.pack(["a", "a", "b", "c", "c"]) ==
+             ["aa", "b", "cc"]
+
+    assert NinetyNine.pack([1, 1, 2, 3, 3]) ==
+             ["11", "2", "33"]
 
     assert NinetyNine.pack(["a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e"]) ==
              ["aaaa", "b", "cc", "aa", "d", "eeee"]
   end
 
   test "[10] Should encode duplicates" do
-    assert NinetyNine.encode(["a", "a", "b", "c", "c"]) == %{"a" => 2, "b" => 1, "c" => 2}
-    assert NinetyNine.encode([1, 1, 2, 3, 3]) == %{1 => 2, 2 => 1, 3 => 2}
+    assert NinetyNine.encode(["a", "a", "b", "c", "c"]) ==
+             %{"a" => 2, "b" => 1, "c" => 2}
+
+    assert NinetyNine.encode([1, 1, 2, 3, 3]) ==
+             %{1 => 2, 2 => 1, 3 => 2}
   end
 
   test "[11] Should encode duplicates but modified" do
@@ -141,5 +149,13 @@ defmodule NinetyNineTest do
 
     assert NinetyNine.replicate(["a", "b", "c"], 2) ==
              ["a", "a", "b", "b", "c", "c"]
+  end
+
+  test "[16] Should drop every nth item from a list" do
+    assert NinetyNine.drop_every(Enum.to_list(1..7), 2) ==
+             [1, 3, 5, 7]
+
+    assert NinetyNine.drop_every(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"], 3) ==
+             ["a", "b", "d", "e", "g", "h", "j", "k"]
   end
 end

@@ -29,8 +29,8 @@ defmodule NinetyNineTest do
   end
 
   test "[05] Should return the elements in a list reversed" do
-    assert NinetyNine.my_reverse([]) == []
-    assert NinetyNine.my_reverse(Enum.to_list(1..5)) == [5, 4, 3, 2, 1]
+    assert NinetyNine.reverse([]) == []
+    assert NinetyNine.reverse(Enum.to_list(1..5)) == [5, 4, 3, 2, 1]
   end
 
   test "[06] Should return true if a list is a palindrome" do
@@ -128,9 +128,18 @@ defmodule NinetyNineTest do
   end
 
   test "[14] Should duplicate items in a list" do
-    assert NinetyNine.duplicate([1, 2, 3]) == [1, 1, 2, 2, 3, 3]
+    assert NinetyNine.duplicate([1, 2, 3]) ==
+             [1, 1, 2, 2, 3, 3]
 
-    assert NinetyNine.duplicate(["a", "b", "c", "c", "d"]) ==
-             ["a", "a", "b", "b", "c", "c", "c", "c", "d", "d"]
+    assert NinetyNine.duplicate(["a", "b", "c"]) ==
+             ["a", "a", "b", "b", "c", "c"]
+  end
+
+  test "[15] Should duplicate items in a listn n times" do
+    assert NinetyNine.replicate([1, 2, 3], 3) ==
+             [1, 1, 1, 2, 2, 2, 3, 3, 3]
+
+    assert NinetyNine.replicate(["a", "b", "c"], 2) ==
+             ["a", "a", "b", "b", "c", "c"]
   end
 end

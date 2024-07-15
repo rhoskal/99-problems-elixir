@@ -48,7 +48,7 @@ defmodule NinetyNine do
       1
 
   """
-  @spec element_at(non_neg_integer(), Enumerable.t()) :: term() | nil
+  @spec element_at(integer(), Enumerable.t()) :: term() | nil
   def element_at(_, []), do: nil
   def element_at(n, [x | _]) when n == 1, do: x
   def element_at(n, [_ | xs]), do: element_at(n - 1, xs)
@@ -77,12 +77,12 @@ defmodule NinetyNine do
 
   ## Examples
 
-      iex> NinetyNine.my_reverse([1, 2, 3])
+      iex> NinetyNine.reverse([1, 2, 3])
       [3, 2, 1]
 
   """
-  @spec my_reverse(Enumerable.t()) :: list()
-  def my_reverse(xs), do: List.foldl(xs, [], fn x, acc -> [x | acc] end)
+  @spec reverse(Enumerable.t()) :: list()
+  def reverse(xs), do: List.foldl(xs, [], fn x, acc -> [x | acc] end)
 
   @doc """
   Problem 6
@@ -295,4 +295,19 @@ defmodule NinetyNine do
   @spec duplicate(Enumerable.t()) :: list()
   def duplicate([]), do: []
   def duplicate([head | tail]), do: [head, head] ++ duplicate(tail)
+
+  @doc """
+  Problem 15
+
+  Replicate each item in a given list n number of times.
+
+  ## Examples
+
+      iex> NinetyNine.replicate([1, 2, 3], 3)
+      [1, 1, 1, 2, 2, 2, 3, 3, 3]
+
+  """
+  @spec replicate(Enumerable.t(), integer()) :: list()
+  def replicate([], _), do: []
+  def replicate([head | tail], n), do: List.duplicate(head, n) ++ replicate(tail, n)
 end

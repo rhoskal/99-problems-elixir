@@ -822,6 +822,15 @@ defmodule NinetyNine do
   @spec phi(integer()) :: integer()
   def phi(n),
     do:
-      for({p, m} <- prime_factors_mult(n), do: (p - 1) * round(:math.pow(p, m - 1)))
-      |> Enum.reduce(1, fn x, acc -> x * acc end)
+      prime_factors_mult(n)
+      |> List.foldl(1, fn {p, m}, acc ->
+        acc * (p - 1) * round(:math.pow(p, m - 1))
+      end)
+
+  # using list comprehension
+  # @spec phi(integer()) :: integer()
+  # def phi(n),
+  #   do:
+  #     for({p, m} <- prime_factors_mult(n), do: (p - 1) * round(:math.pow(p, m - 1)))
+  #     |> Enum.reduce(1, fn x, acc -> x * acc end)
 end

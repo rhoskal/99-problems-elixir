@@ -285,6 +285,7 @@ defmodule NinetyNine do
   Problem 14
 
   Duplicate each item in a given list.
+  Note: equivalent native fn is `List.duplicate/2`
 
   ## Examples
 
@@ -300,6 +301,7 @@ defmodule NinetyNine do
   Problem 15
 
   Replicate each item in a given list n number of times.
+  Note: equivalent native fn is `List.duplicate/2`
 
   ## Examples
 
@@ -315,6 +317,7 @@ defmodule NinetyNine do
   Problem 16
 
   Drop every nth item in a given list.
+  Note: equivalent native fn is `Enum.drop_every/2`
 
   ## Examples
 
@@ -330,6 +333,7 @@ defmodule NinetyNine do
   Problem 17
 
   Splits a list into two parts; the length of the first part is given.
+  Note: equivalent native fn is `Enum.split/2`
 
   ## Examples
 
@@ -337,7 +341,25 @@ defmodule NinetyNine do
       {[1, 2], [3, 4, 5, 6, 7]}
 
   """
-  @spec split(Enumerable.t(), integer()) :: [] | {list(), list()}
+  @spec split(Enumerable.t(), integer()) :: {list(), list()}
   def split(xs, n) when n <= 0, do: {[], xs}
   def split(xs, n), do: {Enum.take(xs, n), Enum.drop(xs, n)}
+
+  @doc """
+  Problem 18
+
+  Given two indices, i and k, the slice is the list containing the elements between
+  the i'th and k'th element of the original list (both limits included).
+  Start counting the elements with 1.
+  Note: equivalent native fn is `Enum.slice/3`
+
+  ## Examples
+
+      iex> NinetyNine.slice([1, 2, 3, 4, 5, 6, 7], 2, 6)
+      [2, 3, 4, 5, 6]
+
+  """
+  @spec slice(Enumerable.t(), integer(), integer()) :: list()
+  def slice(_, start, stop) when stop <= start, do: []
+  def slice(xs, start, stop), do: Enum.drop(xs, start - 1) |> Enum.take(stop - start + 1)
 end

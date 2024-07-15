@@ -160,9 +160,21 @@ defmodule NinetyNineTest do
   end
 
   test "[17] Should split a given list into 2 parts" do
-    assert NinetyNine.split(Enum.to_list(1..10), 0) == {[], Enum.to_list(1..10)}
+    assert NinetyNine.split(Enum.to_list(1..10), 0) ==
+             {[], Enum.to_list(1..10)}
 
     assert NinetyNine.split(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"], 3) ==
              {["a", "b", "c"], ["d", "e", "f", "g", "h", "i", "j", "k"]}
+  end
+
+  test "[18] Should slice a list given a range" do
+    assert NinetyNine.slice(Enum.to_list(1..7), 2, 6) ==
+             [2, 3, 4, 5, 6]
+
+    assert NinetyNine.slice(Enum.to_list(1..7), 3, 1) ==
+             []
+
+    assert NinetyNine.slice(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"], 3, 7) ==
+             ["c", "d", "e", "f", "g"]
   end
 end

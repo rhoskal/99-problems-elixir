@@ -215,4 +215,42 @@ defmodule NinetyNineTest do
     assert Kernel.length(NinetyNine.rnd_permutations([1, 2, 3, 4, 5])) == 5
   end
 
+  test "[26] Should generate combinations" do
+    assert NinetyNine.combinations(0, ["a", "b", "c", "d"]) ==
+             [[]]
+
+    assert NinetyNine.combinations(1, ["a", "b", "c", "d"]) ==
+             [["a"], ["b"], ["c"], ["d"]]
+
+    assert NinetyNine.combinations(1, [1, 2, 3, 4]) ==
+             [[1], [2], [3], [4]]
+
+    assert NinetyNine.combinations(2, [1, 2, 3, 4]) ==
+             [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]
+
+    assert NinetyNine.combinations(3, ["a", "b", "c", "d", "e", "f"]) ==
+             [
+               ["a", "b", "c"],
+               ["a", "b", "d"],
+               ["a", "b", "e"],
+               ["a", "b", "f"],
+               ["a", "c", "d"],
+               ["a", "c", "e"],
+               ["a", "c", "f"],
+               ["a", "d", "e"],
+               ["a", "d", "f"],
+               ["a", "e", "f"],
+               ["b", "c", "d"],
+               ["b", "c", "e"],
+               ["b", "c", "f"],
+               ["b", "d", "e"],
+               ["b", "d", "f"],
+               ["b", "e", "f"],
+               ["c", "d", "e"],
+               ["c", "d", "f"],
+               ["c", "e", "f"],
+               ["d", "e", "f"]
+             ]
+  end
+
 end

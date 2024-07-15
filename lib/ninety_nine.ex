@@ -480,4 +480,24 @@ defmodule NinetyNine do
   def rnd_permutations([]), do: []
   def rnd_permutations(xs), do: rnd_select(xs, Enum.count(xs))
 
+  @doc """
+  Problem 26
+
+  Generate combinations of k distinct objects chosen from the n elements of a list.
+
+  ## Examples
+
+      iex> NinetyNine.combinations(1, [1, 2, 3, 4])
+      [[1], [2], [3], [4]]
+
+  """
+  @spec combinations(integer(), Enumerable.t()) :: [[term()]]
+  def combinations(0, _), do: [[]]
+
+  def combinations(n, xs) when n > 0 do
+    for i <- 0..(length(xs) - n),
+        x <- combinations(n - 1, Enum.drop(xs, i + 1)),
+        do: [Enum.at(xs, i) | x]
+  end
+
 end

@@ -650,6 +650,7 @@ defmodule NinetyNine do
   @spec prime_factors(integer()) :: [integer()]
   def prime_factors(n), do: prime_factors_helper(n, 2)
 
+  @spec prime_factors_helper(integer(), integer()) :: [integer()]
   defp prime_factors_helper(num, _divisor) when num == 1, do: []
 
   defp prime_factors_helper(num, divisor) when rem(num, divisor) == 0,

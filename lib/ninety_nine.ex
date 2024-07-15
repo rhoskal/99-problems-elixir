@@ -738,4 +738,28 @@ defmodule NinetyNine do
 
   def goldbach_list(lower, upper),
     do: for(i <- lower..upper, rem(i, 2) == 0, do: {i, goldbach(i)})
+
+  # A solution that uses Elixir's Map which arguably could be a better
+  # data structure to hold the resut
+  # @spec goldbach_list(integer(), integer()) :: map()
+  # def goldbach_list(lower, upper) do
+  #   evens =
+  #     Enum.to_list(lower..upper)
+  #     |> Enum.filter(&(rem(&1, 2) == 0))
+
+  #   goldbach_list_helper(evens, %{})
+  # end
+
+  # @spec goldbach_list_helper(Enumerable.t(), map()) :: map()
+  # defp goldbach_list_helper([], acc), do: acc
+
+  # defp goldbach_list_helper(evens, acc) do
+  #   [key | rest] = evens
+  #   gb = goldbach(key)
+
+  #   case acc do
+  #     %{^key => _} -> goldbach_list_helper(rest, %{acc | key => gb})
+  #     %{} -> goldbach_list_helper(rest, Map.put(acc, key, gb))
+  #   end
+  # end
 end

@@ -229,4 +229,24 @@ defmodule NinetyNine do
       end
     end)
   end
+
+  @doc """
+  Problem 12
+
+  Decode a run-length encoded list.
+
+  ## Examples
+
+      iex> NinetyNine.decode_modified([{:multiple_encode, "a", 2}, {:single_encode, "b"}, {:multiple_encode, "c", 2}])
+      ["a", "a", "b", "c", "c"]
+
+  """
+  @spec decode_modified([
+          {:multiple_encode | :single_encode, term(), integer()}
+        ]) :: list()
+  def decode_modified([]), do: []
+  def decode_modified([{:single_encode, val} | rest]), do: [val] ++ decode_modified(rest)
+
+  def decode_modified([{:multiple_encode, val, count} | rest]),
+    do: List.duplicate(val, count) ++ decode_modified(rest)
 end

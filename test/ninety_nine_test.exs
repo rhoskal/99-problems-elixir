@@ -84,10 +84,32 @@ defmodule NinetyNineTest do
   end
 
   test "[11] Should encode duplicates but modified" do
-    assert NinetyNine.encode_modified(["a", "a", "b", "c", "c"]) ==
-             [{:multiple_encode, "a", 2}, {:single_encode, "b"}, {:multiple_encode, "c", 2}]
+    assert NinetyNine.encode_modified(["a", "a", "b", "c", "c"]) == [
+             {:multiple_encode, "a", 2},
+             {:single_encode, "b"},
+             {:multiple_encode, "c", 2}
+           ]
 
-    assert NinetyNine.encode_modified([1, 1, 2, 3, 3]) ==
-             [{:multiple_encode, 1, 2}, {:single_encode, 2}, {:multiple_encode, 3, 2}]
+    assert NinetyNine.encode_modified([1, 1, 2, 3, 3]) == [
+             {:multiple_encode, 1, 2},
+             {:single_encode, 2},
+             {:multiple_encode, 3, 2}
+           ]
+  end
+
+  test "[12] Should decode encoded duplicates" do
+    assert NinetyNine.decode_modified([
+             {:multiple_encode, "a", 2},
+             {:single_encode, "b"},
+             {:multiple_encode, "c", 2}
+           ]) ==
+             ["a", "a", "b", "c", "c"]
+
+    assert NinetyNine.decode_modified([
+             {:multiple_encode, 1, 2},
+             {:single_encode, 2},
+             {:multiple_encode, 3, 2}
+           ]) ==
+             [1, 1, 2, 3, 3]
   end
 end

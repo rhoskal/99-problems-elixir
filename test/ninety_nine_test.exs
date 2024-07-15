@@ -185,4 +185,9 @@ defmodule NinetyNineTest do
     assert NinetyNine.rotate(["a", "b", "c", "d", "e", "f", "g", "h"], -2) ==
              ["g", "h", "a", "b", "c", "d", "e", "f"]
   end
+
+  test "[20] Should remove nth element" do
+    assert NinetyNine.remove_at(["a", "b", "c", "d"], 2) == ["a", "c", "d"]
+    assert NinetyNine.remove_at(["a", "b", "c", "d"], -1) == ["a", "b", "c", "d"]
+  end
 end

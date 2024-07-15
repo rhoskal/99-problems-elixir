@@ -374,9 +374,26 @@ defmodule NinetyNine do
       [3, 4, 5, 6, 7, 1, 2]
 
   """
-  @spec rotate(Enumerable.t(), integer()) :: {list(), list()}
+  @spec rotate(Enumerable.t(), integer()) :: list()
   def rotate(xs, n) when n < 0,
     do: Enum.drop(xs, n + Enum.count(xs)) ++ Enum.take(xs, n + Enum.count(xs))
 
   def rotate(xs, n), do: Enum.drop(xs, n) ++ Enum.take(xs, n)
+
+  @doc """
+  Problem 20
+
+  Removes the nth element from a list.
+  Start counting the elements with 1.
+  Note: equivalent native fn is `List.delete_at/2`
+
+  ## Examples
+
+      iex> NinetyNine.remove_at([1, 2, 3, 4, 5, 6, 7], 4)
+      [1, 2, 3, 5, 6, 7]
+
+  """
+  @spec remove_at(Enumerable.t(), integer()) :: list()
+  def remove_at(xs, n) when n < 0, do: xs
+  def remove_at(xs, n), do: Enum.take(xs, n - 1) ++ Enum.drop(xs, n)
 end

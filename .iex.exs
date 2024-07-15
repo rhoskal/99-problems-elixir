@@ -1,3 +1,5 @@
+import NinetyNine
+
 defmodule AC do
   IEx.configure(
     default_prompt:

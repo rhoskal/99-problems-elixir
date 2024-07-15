@@ -621,12 +621,13 @@ defmodule NinetyNine do
 
   ## Examples
 
-      iex> NinetyNine.prime?(3)
+      iex> NinetyNine.prime?(2)
       true
 
   """
   @spec prime?(integer()) :: boolean()
   def prime?(n) when n < 2, do: false
+  def prime?(n) when n == 2, do: true
 
   def prime?(n) do
     Stream.iterate(3, &(&1 + 2))

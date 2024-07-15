@@ -331,7 +331,6 @@ defmodule NinetyNineTest do
 
   test "[31] Should return true if given number is prime" do
     assert NinetyNine.prime?(0) == false
-    assert NinetyNine.prime?(2) == true
     assert NinetyNine.prime?(4) == false
     assert NinetyNine.prime?(7) == true
     assert NinetyNine.prime?(17) == true

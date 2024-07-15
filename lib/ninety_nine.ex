@@ -48,7 +48,7 @@ defmodule NinetyNine do
       1
 
   """
-  @spec element_at(Integer.t(), [String.t() | Integer.t()]) :: [String.t() | Integer.t()]
+  @spec element_at(Integer.t(), List.t()) :: List.t()
   def element_at(_, []), do: nil
   def element_at(n, [x | _]) when n == 1, do: x
   def element_at(n, [_ | xs]), do: element_at(n - 1, xs)
@@ -65,7 +65,7 @@ defmodule NinetyNine do
       3
 
   """
-  @spec my_length([String.t() | Integer.t()]) :: Integer.t()
+  @spec my_length(List.t()) :: Integer.t()
   def my_length([]), do: 0
   def my_length([_ | xs]), do: 1 + my_length(xs)
 
@@ -81,7 +81,7 @@ defmodule NinetyNine do
       [3, 2, 1]
 
   """
-  @spec my_reverse([String.t() | Integer.t()]) :: [String.t() | Integer.t()]
+  @spec my_reverse(List.t()) :: List.t()
   def my_reverse(xs), do: List.foldl(xs, [], fn x, acc -> [x | acc] end)
 
   @doc """
@@ -95,7 +95,7 @@ defmodule NinetyNine do
       true
 
   """
-  @spec is_palindrome([String.t() | Integer.t()]) :: [String.t() | Integer.t()]
+  @spec is_palindrome(List.t()) :: Boolean.t()
   def is_palindrome([]), do: true
   def is_palindrome([_]), do: true
 
@@ -114,7 +114,7 @@ defmodule NinetyNine do
       [1, 2, 3]
 
   """
-  @spec flatten([String.t() | Integer.t()]) :: [String.t() | Integer.t()]
+  @spec flatten(List.t()) :: List.t()
   def flatten([]), do: []
   def flatten([x | xs]), do: flatten(x) ++ flatten(xs)
   def flatten(x), do: [x]
@@ -131,7 +131,7 @@ defmodule NinetyNine do
       [1, 2, 3, 4]
 
   """
-  @spec compress([String.t() | Integer.t()]) :: [String.t() | Integer.t()]
+  @spec compress(List.t()) :: List.t()
   def compress([]), do: []
 
   def compress([head | tail]),
@@ -148,7 +148,7 @@ defmodule NinetyNine do
       ["aa", "b", "cc"]
 
   """
-  @spec pack([String.t() | Integer.t()]) :: [String.t()]
+  @spec pack(List.t()) :: [String.t()]
   def pack([]), do: []
 
   def pack(xs) do
@@ -169,7 +169,7 @@ defmodule NinetyNine do
       %{"a" => 2, "b" => 1, "c" => 2}
 
   """
-  @spec encode([String.t() | Integer.t()]) :: Map.t([String.t() | Integer.t()], Integer.t())
+  @spec encode(List.t()) :: Map.t(Term.t(), Integer.t())
   def encode(xs) do
     xs
     |> Enum.uniq()
@@ -214,8 +214,8 @@ defmodule NinetyNine do
       [{:multiple_encode, "a", 2}, {:single_encode, "b"}, {:multiple_encode, "c", 2}]
 
   """
-  @spec encode_modified([String.t() | Integer.t()]) :: [
-          Atom.t(:multiple_encode | :single_encode, String.t() | Integer.t(), Integer.t())
+  @spec encode_modified(List.t()) :: [
+          Atom.t(:multiple_encode | :single_encode, Term.t(), Integer.t())
         ]
   def encode_modified(xs) do
     xs

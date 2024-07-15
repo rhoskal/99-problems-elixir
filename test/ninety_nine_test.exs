@@ -204,15 +204,15 @@ defmodule NinetyNineTest do
   end
 
   test "[23] Should get random selection" do
-    assert Kernel.length(NinetyNine.rnd_select([1, 2, 3, 4, 5], 5)) == 5
+    assert length(NinetyNine.rnd_select([1, 2, 3, 4, 5], 5)) == 5
   end
 
   test "[24] Should get random selection" do
-    assert Kernel.length(NinetyNine.lotto_select(6, 49)) == 6
+    assert length(NinetyNine.lotto_select(6, 49)) == 6
   end
 
   test "[25] Should generate random permutation" do
-    assert Kernel.length(NinetyNine.rnd_permutations([1, 2, 3, 4, 5])) == 5
+    assert length(NinetyNine.rnd_permutations([1, 2, 3, 4, 5])) == 5
   end
 
   test "[26] Should generate combinations" do
@@ -254,7 +254,7 @@ defmodule NinetyNineTest do
   end
 
   test "[27] Should return combinations of length 3" do
-    assert Kernel.length(
+    assert length(
              NinetyNine.group3([
                "aldo",
                "beat",
@@ -268,14 +268,14 @@ defmodule NinetyNineTest do
              ])
            ) == 84
 
-    assert Kernel.length(NinetyNine.group3(Enum.to_list(1..6))) == 20
+    assert length(NinetyNine.group3(Enum.to_list(1..6))) == 20
 
     assert NinetyNine.group3(Enum.to_list(1..4)) ==
              [[[1, 2, 3]], [[1, 2, 4]], [[1, 3, 4]], [[2, 3, 4]]]
   end
 
   test "[28] Should handle a generalized `group3`" do
-    assert Kernel.length(
+    assert length(
              NinetyNine.group([2, 3, 4], [
                "aldo",
                "beat",
@@ -289,7 +289,7 @@ defmodule NinetyNineTest do
              ])
            ) == 1260
 
-    assert Kernel.length(
+    assert length(
              NinetyNine.group([2, 2, 5], [
                "aldo",
                "beat",
@@ -327,5 +327,14 @@ defmodule NinetyNineTest do
   test "[30] Should return elements sorted by least frequency lengths first" do
     assert NinetyNine.lfsort(["abc", "de", "fgh", "de", "ijkl", "mn", "o"]) ==
              ["ijkl", "o", "abc", "fgh", "de", "de", "mn"]
+  end
+
+  test "[31] Should return true if given number is prime" do
+    assert NinetyNine.prime?(0) == false
+    assert NinetyNine.prime?(4) == false
+    assert NinetyNine.prime?(7) == true
+    assert NinetyNine.prime?(17) == true
+    assert NinetyNine.prime?(47) == true
+    assert NinetyNine.prime?(223) == true
   end
 end

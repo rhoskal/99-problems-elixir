@@ -413,7 +413,7 @@ defmodule NinetyNine do
   """
   @spec insert_at(term(), Enumerable.t(), integer()) :: list()
   def insert_at(_, xs, n) when n < 0, do: xs
-  def insert_at(val, xs, n) when n > Kernel.length(xs), do: xs ++ [val]
+  def insert_at(val, xs, n) when n > length(xs), do: xs ++ [val]
   def insert_at(val, xs, n), do: Enum.take(xs, n) ++ [val] ++ Enum.drop(xs, n)
 
   @doc """
@@ -447,7 +447,7 @@ defmodule NinetyNine do
   def rnd_select([], _), do: []
 
   def rnd_select(xs, n) do
-    random = :rand.uniform(Kernel.length(xs) - 1)
+    random = :rand.uniform(length(xs) - 1)
 
     [Enum.fetch!(xs, random)] ++ rnd_select(xs, n - 1)
   end
@@ -610,5 +610,28 @@ defmodule NinetyNine do
     list
     |> Enum.filter(&(String.length(&1) == len))
     |> length()
+  end
+
+  @doc """
+  Problem 31
+
+  Should return true if given number is prime.
+  Note: uses "trivial division" which is the most basic algo.
+  Optimizations: only check up to the sqrt n and skip evens after 2
+
+  ## Examples
+
+      iex> NinetyNine.prime?(3)
+      true
+
+  """
+  @spec prime?(integer()) :: boolean()
+  def prime?(n) when n < 2, do: false
+
+  def prime?(n) do
+    Stream.iterate(3, &(&1 + 2))
+    |> Enum.take_while(&(&1 * &1 <= n))
+    |> List.insert_at(0, 2)
+    |> Enum.all?(&(rem(n, &1) != 0))
   end
 end

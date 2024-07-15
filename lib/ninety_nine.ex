@@ -201,4 +201,32 @@ defmodule NinetyNine do
   #     %{} -> encode_helper(rest, Map.put(acc, key, count))
   #   end
   # end
+
+  @doc """
+  Problem 11
+
+  Runs the "run-length" encoding data compression algorithm.
+  Consecutive duplicates of elements are encoded as lists (N E) where N is the number of duplicates of the element E..
+
+  ## Examples
+
+      iex> NinetyNine.encode_modified(["a", "a", "b", "c", "c"])
+      [{:multiple_encode, "a", 2}, {:single_encode, "b"}, {:multiple_encode, "c", 2}]
+
+  """
+  @spec encode_modified([String.t() | Integer.t()]) :: [
+          Atom.t(:multiple_encode | :single_encode, String.t() | Integer.t(), Integer.t())
+        ]
+  def encode_modified(xs) do
+    xs
+    |> encode()
+    |> Map.to_list()
+    |> Enum.map(fn {value, count} ->
+      if count > 1 do
+        {:multiple_encode, value, count}
+      else
+        {:single_encode, value}
+      end
+    end)
+  end
 end

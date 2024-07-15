@@ -196,4 +196,10 @@ defmodule NinetyNineTest do
     assert NinetyNine.insert_at("X", ["a", "b", "c", "d"], -1) == ["a", "b", "c", "d"]
     assert NinetyNine.insert_at("X", ["a", "b", "c", "d"], 99) == ["a", "b", "c", "d", "X"]
   end
+
+  test "[22] Should create an array with sequential elements given range" do
+    assert NinetyNine.range(4, 9) == [4, 5, 6, 7, 8, 9]
+    assert NinetyNine.range(5, 1) == []
+    assert NinetyNine.range(1, 1) == [1]
+  end
 end

@@ -415,4 +415,19 @@ defmodule NinetyNine do
   def insert_at(_, xs, n) when n < 0, do: xs
   def insert_at(val, xs, n) when n > Kernel.length(xs), do: xs ++ [val]
   def insert_at(val, xs, n), do: Enum.take(xs, n) ++ [val] ++ Enum.drop(xs, n)
+
+  @doc """
+  Problem 22
+
+  Rotate a list n places to the left.
+
+  ## Examples
+
+      iex> NinetyNine.range(1, 5)
+      [1, 2, 3, 4, 5]
+
+  """
+  @spec range(integer(), integer()) :: list()
+  def range(start, stop) when stop < start, do: []
+  def range(start, stop), do: [start] ++ range(start + 1, stop)
 end

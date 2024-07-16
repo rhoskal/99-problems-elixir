@@ -40,7 +40,7 @@ defmodule NinetyNine do
   Problem 3
 
   Find the nth element of a list. The first element in the list is number 1.
-  Note: equivalent native fn is `List.insert_at/3`
+  Note: equivalent native fn is `Enum.at/3`
 
   ## Examples
 
@@ -833,4 +833,23 @@ defmodule NinetyNine do
   #   do:
   #     for({p, m} <- prime_factors_mult(n), do: (p - 1) * round(:math.pow(p, m - 1)))
   #     |> Enum.reduce(1, fn x, acc -> x * acc end)
+
+  @doc """
+  Problem 41
+
+  Calculate Euler's totient function phi(m) - improved.
+
+  ## Examples
+
+      iex> NinetyNine.timeit(fn -> 123_456 * 654_321 end) == 0
+      true
+
+  """
+  @spec timeit(function()) :: float()
+  def timeit(function),
+    do:
+      function
+      |> :timer.tc()
+      |> elem(0)
+      |> Kernel./(1_000_000)
 end

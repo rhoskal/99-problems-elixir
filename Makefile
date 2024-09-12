@@ -39,15 +39,15 @@ clean: ## Remove build artifacts
 	rm -rf _build
 
 .PHONY: deps
-deps: ## Install Elixir and Npm deps
+deps: ## Install deps
 	mix deps.get --force
 
 .PHONY: run
-run: ## Run the web server
+run: ## Run iex
 	iex -S mix
 
 .PHONY: test
-test: ## Test Elixir code
+test: ## Test code
 	mix test
 
 .PHONY: verify
@@ -58,9 +58,9 @@ verify: ## Run dialyzer to verify typespecs
 # ------------------------------
 
 .PHONY: format
-format: ## Format all Elixir files
+format: ## Format files
 	mix format
 
 .PHONY: lint
-lint: ## Lint all Elixir files
+lint: ## Lint files
 	mix credo
